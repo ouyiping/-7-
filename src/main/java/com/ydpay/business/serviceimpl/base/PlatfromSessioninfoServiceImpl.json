@@ -1,0 +1,11 @@
+{
+	addSessioninfoPlatfrom:{
+		companyid:"Long"
+	},
+	getSessioninfoPlatfrom:{
+		platfromsessioninfoid:"Long"
+	},
+	deleteSessioninfoPlatfrom:{
+		platfromsessioninfoid:"Long"
+	}
+}

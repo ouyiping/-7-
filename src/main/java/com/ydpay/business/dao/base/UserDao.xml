@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+     <!DOCTYPE mapper 
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ydpay.business.dao.base.UserDao">
+   <select id="select" resultType="map">
+      select
+      <choose>
+          <when test="selects != null">
+               <foreach collection="selects" item="item" index="index" separator="," >${item}</foreach>
+          </when>
+          <otherwise>
+                *    
+          </otherwise>
+      </choose>
+      from tryit_base.user
+      <where>
+<!--          <if test="wheres.appversioncontentid != null and wheres.appversioncontentid !='' ">  and appversioncontentid = #{wheres.appversioncontentid}::bigint</if>-->
+<!--          <if test="wheres.appversionid != null and wheres.appversionid !='' ">  and appversionid = #{wheres.appversionid}::bigint</if>-->
+<!--          <if test="wheres.content != null and wheres.content !='' ">  and content = #{wheres.content}::varchar</if>-->
+<!--          <if test="wheres.contentindex != null and wheres.contentindex !='' ">  and contentindex = #{wheres.contentindex}::integer</if>-->
+<!--          <if test="wheres.begincreatedtime != null and wheres.begincreatedtime !='' ">  and createdtime &gt;= #{wheres.begincreatedtime}::timestamp</if>-->
+<!--          <if test="wheres.endcreatedtime != null and wheres.endcreatedtime !='' "> and createdtime &lt;= #{wheres.endcreatedtime}::timestamp</if>-->
+      </where>
+     <if test="orders != null and orderkey != null ">
+            order by   <foreach collection="orders" item="item" index="index"  open="(" separator="," close=")">${item}</foreach>  ${orderkey} 
+     </if>
+      <if test="wheres.pagenum != null and wheres.pagenum != '' and wheres.pagesize != null and wheres.pagesize != '' ">
+               limit #{wheres.pagesize}::integer offset ${(wheres.pagenum - 1) * wheres.pagesize}
+      </if>
+     </select>
+
+   <select id="select_count" resultType="Long">
+         select count(*) from tryit_base.user
+      <where>
+          <if test="wheres.appversioncontentid != null and wheres.appversioncontentid !='' ">  and appversioncontentid = #{wheres.appversioncontentid}::bigint</if>
+          <if test="wheres.appversionid != null and wheres.appversionid !='' ">  and appversionid = #{wheres.appversionid}::bigint</if>
+          <if test="wheres.content != null and wheres.content !='' ">  and content = #{wheres.content}::varchar</if>
+          <if test="wheres.contentindex != null and wheres.contentindex !='' ">  and contentindex = #{wheres.contentindex}::integer</if>
+          <if test="wheres.begincreatedtime != null and wheres.begincreatedtime !='' ">  and createdtime &gt;= #{wheres.begincreatedtime}::timestamp</if>
+          <if test="wheres.endcreatedtime != null and wheres.endcreatedtime !='' "> and createdtime &lt;= #{wheres.endcreatedtime}::timestamp</if>
+      </where>
+     </select>
+
+   <insert id="insert" parameterType="map">
+        insert into tryit_base.user(
+           userid,
+           name
+        )
+        values(
+           #{userid}::bigint,
+           #{name}::varchar
+        )
+   </insert>
+
+   <update id="update" parameterType="map">
+        update tryit_base.user
+        <set>
+<!--           <if test="appversioncontentid != null and appversioncontentid !='' ">appversioncontentid = #{appversioncontentid}::bigint,</if>-->
+<!--           <if test="appversionid != null and appversionid !='' ">appversionid = #{appversionid}::bigint,</if>-->
+<!--           <if test="content != null and content !='' ">content = #{content}::varchar,</if>-->
+<!--           <if test="contentindex != null and contentindex !='' ">contentindex = #{contentindex}::integer,</if>-->
+<!--           <if test="createdtime != null and createdtime !='' ">createdtime = #{createdtime}::timestamp,</if>-->
+        </set>
+        <where>
+          userid = #{userid}::bigint
+        </where>
+   </update>
+
+   <delete id="delete" parameterType="map">
+     delete from tryit_base.user
+     <where>
+          userid = #{userid}::bigint
+       </where>
+   </delete>
+
+   <select id="maxid" resultType="long">
+        select coalesce(max(appversioncontentid), 0)+1 from tryit_base.user
+   </select>
+
+</mapper>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+     <!DOCTYPE mapper 
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ydpay.business.dao.database.DatabaseDao">
+	<select id="select_schema" resultType="Map">
+		select nspname as schemaname
+		from pg_namespace a
+		left join pg_user b on b.usesysid =
+		a.nspowner
+		<where>
+			<if test="wheres.usename != null and wheres.usename !='' "> and usename = #{wheres.usename}::varchar</if>
+		</where>
+	</select>
+
+	<select id="select_table" resultType="Map">
+		select schemaname, tablename, tableowner
+		from pg_tables 
+		<where>
+			<if test="wheres.schemaname != null and wheres.schemaname !='' "> and schemaname = #{wheres.schemaname}::varchar</if>
+			<if test="wheres.tableowner != null and wheres.tableowner !='' "> and tableowner = #{wheres.tableowner}::varchar</if>
+			<if test="wheres.tablename != null and wheres.tablename !='' "> and tablename = #{wheres.tablename}::varchar</if>
+		</where>
+	</select>
+
+	<select id="select_table_column" resultType="Map">
+		SELECT table_schema as schemaname, table_name as tablename,
+		column_name as columnname, data_type as datatype
+		FROM
+		information_schema.columns
+		<where>
+			<if test="wheres.schemaname != null and wheres.schemaname !='' "> and table_schema = #{wheres.schemaname}::varchar</if>
+			<if test="wheres.tablename != null and wheres.tablename !='' "> and table_name = #{wheres.tablename}::varchar</if>
+			<if test="wheres.columnname != null and wheres.columnname !='' "> and column_name = #{wheres.columnname}::varchar</if>
+		</where>
+	</select>
+
+	<select id="select_table_primary_key" resultType="Map">
+		select pg_attribute.attname as columnname, pg_class.relname as tablename, 
+				pg_namespace.nspname as schemaname ,pg_type.typname as typename
+			from pg_constraint 
+			inner join pg_class on pg_constraint.conrelid = pg_class.oid
+			inner join pg_attribute on pg_attribute.attrelid = pg_class.oid and pg_attribute.attnum = pg_constraint.conkey[1]
+			inner join pg_type on pg_type.oid = pg_attribute.atttypid
+			inner join pg_namespace on pg_constraint.connamespace = pg_namespace.oid
+		<where>
+			<if test="1==1">and pg_constraint.contype='p'</if>
+			<if test="wheres.schemaname != null and wheres.schemaname !='' "> and pg_namespace.nspname = #{wheres.schemaname}::varchar</if>
+			<if test="wheres.tablename != null and wheres.tablename !='' "> and pg_class.relname = #{wheres.tablename}::varchar</if>
+		</where>
+	</select>
+	
+	<select id="select_max_id" resultType="long">
+		select 
+              coalesce(max(${wheres.primarykey}), 1)::bigint    
+		 from ${wheres.tablename}
+	</select>
+	
+</mapper>

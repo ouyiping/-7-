@@ -1,0 +1,290 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.ydpay</groupId>
+  <artifactId>base-service-provider</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>base-service-provider</name>
+  <url>http://maven.aliyun.com</url>
+
+   <properties>
+	  <spring_version>3.2.9.RELEASE</spring_version>
+      <encoding>UTF-8</encoding>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+      <java.version>1.7</java.version>
+      <source.version>1.7</source.version>
+      <target.version>1.7</target.version>
+      <maven.test.skip>true</maven.test.skip>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>nexus</id>
+      <name>Team Nexus Repository</name>
+      <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>nexus</id>
+      <name>Team Nexus Repository</name>
+      <url>http://maven.masget.com:7078/nexus/content/groups/public</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <dependencies>
+		<dependency>
+			<groupId>com.masget</groupId>
+			<artifactId>ydpay-commons</artifactId>
+            <version>${project.version}</version>
+		</dependency>
+    <dependency>
+      <groupId>com.masget</groupId>
+      <artifactId>collections</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.masget</groupId>
+      <artifactId>commons-beanutils</artifactId>
+      <version>1.8.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.masget</groupId>
+      <artifactId>commons-lang-2.6</artifactId>
+      <version>2.6</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>1.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.masget</groupId>
+      <artifactId>ezmorph-1.0.6</artifactId>
+      <version>1.0.6</version>
+    </dependency>
+    <dependency>
+      <groupId>com.masget</groupId>
+      <artifactId>jsonlib</artifactId>
+      <version>1.0</version>
+      <classifier>jdk15</classifier>
+    </dependency>
+    <dependency>
+      <groupId>org.javassist</groupId>
+      <artifactId>javassist</artifactId>
+      <version>3.15.0-GA</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-all</artifactId>
+      <version>4.0.19.Final</version>
+    </dependency>
+
+
+
+    <dependency>
+      <groupId>dom4j</groupId>
+      <artifactId>dom4j</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-pool2</artifactId>
+      <version>2.4.2</version>
+    </dependency>
+
+    <!-- log -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.7.21</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.5</version>
+    </dependency>
+
+    <!-- redis start -->
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <version>2.8.0</version>
+    </dependency>
+    <!-- redis end -->
+
+    <!-- https://mvnrepository.com/artifact/junit/junit -->
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+    </dependency>
+    
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <version>4.3.8.RELEASE</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>1.10.19</version>
+      <type>pom</type>
+    </dependency>
+
+	<dependency>
+		<groupId>com.masget</groupId>
+		<artifactId>mail</artifactId>
+		<version>1.0</version>
+	</dependency>
+
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.3-1103-jdbc41</version>
+		</dependency>
+		<dependency>
+			<groupId>com.masget</groupId>
+			<artifactId>zxing</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.2.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+	<dependency>
+	  <groupId>com.aliyuncs</groupId>
+	  <artifactId>aliyun-java-sdk-core</artifactId>
+	  <version>3.2.3</version>
+	</dependency>
+	<dependency>
+	  <groupId>com.aliyuncs</groupId>
+	  <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+	  <version>1.0.0</version>
+	  <classifier>SANPSHOT</classifier>
+	</dependency>
+	
+  </dependencies>
+
+   <build>
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.xml</include>
+          <include>**/*.json</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*.*</include>
+        </includes>
+      </resource>
+    </resources>
+
+		<pluginManagement />
+		<plugins>
+          <!--<plugin>-->
+              <!--<groupId>org.codehaus.mojo</groupId>-->
+              <!--<artifactId>aspectj-maven-plugin</artifactId>-->
+              <!--<version>1.7</version>-->
+              <!--<configuration>-->
+                  <!--<complianceLevel>1.7</complianceLevel>-->
+                  <!--<source>1.7</source>-->
+                  <!--<target>1.7</target>-->
+                  <!--<aspectLibraries>-->
+                      <!--<aspectLibrary>-->
+                          <!--<groupId>com.masget</groupId>-->
+                          <!--<artifactId>base-service-tracer</artifactId>-->
+                      <!--</aspectLibrary>-->
+                  <!--</aspectLibraries>-->
+              <!--</configuration>-->
+              <!--<executions>-->
+                  <!--<execution>-->
+                      <!--<goals>-->
+                          <!--<goal>compile</goal>-->
+                      <!--</goals>-->
+                  <!--</execution>-->
+              <!--</executions>-->
+          <!--</plugin>-->
+
+          <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-compiler-plugin</artifactId>
+             <version>2.3.1</version>
+             <configuration>
+                 <source>${source.version}</source>
+                 <target>${target.version}</target>
+                 <encoding>${encoding}</encoding>
+                 <failOnError>true</failOnError>
+                 <showDeprecation>true</showDeprecation>
+                 <showWarnings>true</showWarnings>
+                 <compilerArguments>
+                     <verbose/>
+						<bootclasspath>${java.home}/lib/rt.jar;${java.home}/lib/jce.jar</bootclasspath>
+                 </compilerArguments>
+             </configuration>
+
+             <dependencies>
+                 <dependency>
+                     <groupId>org.codehaus.plexus</groupId>
+                     <artifactId>plexus-compiler-javac</artifactId>
+                     <version>1.8.1</version>
+                 </dependency>
+             </dependencies>
+         </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version> 1.7.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/spring.handlers</resource>
+                                </transformer>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/spring.schemas</resource>
+                                </transformer>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.ydpay.service.BaseApp</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+	</build>
+
+</project>
