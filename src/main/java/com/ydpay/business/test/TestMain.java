@@ -8,19 +8,20 @@ import com.ydpay.business.utils.MD5Util;
 import com.ydpay.business.utils.security.AesEncryption;
 import com.ydpay.business.utils.security.ApiUtil;
 import com.ydpay.business.utils.security.HttpsUtil;
+import com.ydpay.utils.MaxIdUtil;
 
 public class TestMain {
 
 	public static void main(String[] args) throws Exception {
 		//本地接口连接测试
-		String openApiUrl = "https://127.0.0.1:7786/openapi/rest";
-		String appid = "600987967";
-		String session = "6l903uszzfme72z1ya533w7b6mj9i246";
-		String secretkey = "fxgmv564v45mujh3";
-		String method = "masget.base.com.user.selusers";
-		String data = "{\"companyid\":\"600936755\",\"companyname\":\"荣邦科技有限公司\",\"subcompanyid\":\"1001010\",\"subcompanyname\":\"子商户\",\"payorderid\":\"303108271340541251\",\"ordernumber\":\"30100105151151\",\"businesstype\":\"1001\",\"paymenttypeid\":\"4\",\"paymenttypename\":\"银联在线\",\"body\":\"收款\",\"amount\":\"1000\",\"businesstime\":\"2016-08-24 13:10:66\",\"respcode\":\"2\",\"respmsg\":\"支付成功\"}";
-		String retstr = ApiUtil.methodInvoke(openApiUrl, appid, session, secretkey, method, data);
-		System.out.println(retstr);
+//		String openApiUrl = "https://127.0.0.1:7786/openapi/rest";
+//		String appid = "600987967";
+//		String session = "6l903uszzfme72z1ya533w7b6mj9i246";
+//		String secretkey = "fxgmv564v45mujh3";
+//		String method = "masget.base.com.user.selusers";
+//		String data = "{\"companyid\":\"600936755\",\"companyname\":\"荣邦科技有限公司\",\"subcompanyid\":\"1001010\",\"subcompanyname\":\"子商户\",\"payorderid\":\"303108271340541251\",\"ordernumber\":\"30100105151151\",\"businesstype\":\"1001\",\"paymenttypeid\":\"4\",\"paymenttypename\":\"银联在线\",\"body\":\"收款\",\"amount\":\"1000\",\"businesstime\":\"2016-08-24 13:10:66\",\"respcode\":\"2\",\"respmsg\":\"支付成功\"}";
+//		String retstr = ApiUtil.methodInvoke(openApiUrl, appid, session, secretkey, method, data);
+//		System.out.println(retstr);
 		
 		
 		//本地接口连接测试
@@ -31,7 +32,8 @@ public class TestMain {
 //		String retstr = HttpsUtil.doSslPost(openApiUrl, makeReportBackQueryParams(data, secretkey, "paymentreport", appid), "utf-8");
 //		System.out.println(retstr);
 
-		
+		//获取insert主键
+		System.out.println(MaxIdUtil.getUUIDPrimaryKey());
 		
 	}
 	

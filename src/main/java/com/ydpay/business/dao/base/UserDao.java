@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.ydpay.business.entity.base.Appversioncontent;
 import com.ydpay.dao.MyBatisRepository;
 
 /**
@@ -18,7 +17,6 @@ import com.ydpay.dao.MyBatisRepository;
 @MyBatisRepository
 public interface UserDao {
      public List<Map<String,Object>> select(@Param("wheres")Map<String,Object> wheres, @Param("selects")List<String> selects,@Param("orders")List<String> orders,@Param("orderkey")String orderkey);
-     public long select_count(@Param("wheres")Appversioncontent wheres);
      public void insert(Map<String,Object> dataMap);
      public void update(Map<String,Object> dataMap);
      public void delete(Map<String,Object> dataMap);
