@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -17,6 +18,7 @@ import com.ydpay.utils.MgException;
 
 @Controller
 public class ComUserServiceImpl {
+	private static Logger logger =Logger.getLogger(ComUserServiceImpl.class);
 	@Autowired
 	private UserService userService;
 	
@@ -30,7 +32,7 @@ public class ComUserServiceImpl {
 			return new RetStruct("查询成功", "data",
 					JSONObject.toJSON(list)).toString();
 		} catch (JSONException e) {
-			e.printStackTrace();
+			logger.info(e.getMessage());
 			retMap.put("ret", -1);
 			retMap.setMessage("非法json格式参数");
 			return retMap.toString();
@@ -39,7 +41,7 @@ public class ComUserServiceImpl {
 			retMap.setMessage(e.getMessage());
 			return retMap.toString();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.info(e.getMessage());
 			retMap.put("ret", -1);
 			retMap.setMessage("程序异常");
 			return retMap.toString();
@@ -56,7 +58,7 @@ public class ComUserServiceImpl {
 			return new RetStruct("插入成功", "data",
 					JSONObject.toJSON(obj)).toString();
 		} catch (JSONException e) {
-			e.printStackTrace();
+			logger.info(e.getMessage());
 			retMap.put("ret", -1);
 			retMap.setMessage("非法json格式参数");
 			return retMap.toString();
@@ -65,7 +67,7 @@ public class ComUserServiceImpl {
 			retMap.setMessage(e.getMessage());
 			return retMap.toString();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.info(e.getMessage());
 			retMap.put("ret", -1);
 			retMap.setMessage("程序异常");
 			return retMap.toString();
@@ -92,7 +94,7 @@ public class ComUserServiceImpl {
 			return new RetStruct("设置session测试", "data",
 					JSONObject.toJSON(session)).toString();
 		} catch (JSONException e) {
-			e.printStackTrace();
+			logger.info(e.getMessage());
 			retMap.put("ret", -1);
 			retMap.setMessage("非法json格式参数");
 			return retMap.toString();
@@ -101,7 +103,7 @@ public class ComUserServiceImpl {
 			retMap.setMessage(e.getMessage());
 			return retMap.toString();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.info(e.getMessage());
 			retMap.put("ret", -1);
 			retMap.setMessage("程序异常");
 			return retMap.toString();
@@ -124,7 +126,7 @@ public class ComUserServiceImpl {
 			return new RetStruct("获取session测试", "data",
 					JSONObject.toJSON(session)).toString();
 		} catch (JSONException e) {
-			e.printStackTrace();
+			logger.info(e.getMessage());
 			retMap.put("ret", -1);
 			retMap.setMessage("非法json格式参数");
 			return retMap.toString();
@@ -133,7 +135,7 @@ public class ComUserServiceImpl {
 			retMap.setMessage(e.getMessage());
 			return retMap.toString();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.info(e.getMessage());
 			retMap.put("ret", -1);
 			retMap.setMessage("程序异常");
 			return retMap.toString();

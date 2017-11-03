@@ -6,6 +6,6 @@ import java.util.Map;
 import com.alibaba.fastjson.JSONObject;
 
 public interface UserService {
-	public List<Map<String,Object>> selUsers(JSONObject obj);
-	public JSONObject insertUser(JSONObject obj);
+	public List<Map<String,Object>> selUsers(JSONObject obj) throws Exception;
+	public JSONObject insertUser(JSONObject obj) throws Exception;
 }
